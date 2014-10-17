@@ -51,7 +51,7 @@ Or, as a promise:
         return {
             id: faki.data.id,
             name: faki.data.name,
-            gender: faki.random(['male', 'female']
+            gender: faki.random(['male', 'female'])
         };
     });
     
