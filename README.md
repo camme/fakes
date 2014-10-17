@@ -1,4 +1,11 @@
-faki.js
+# Faki
+========
+
+faki.js is a fake api maker to make frontend project a lot faster. It also works as a contract between the frontend and the backend.
+
+Its main goal is to quickly create endpoints with data that might be fake, but looks relevant.
+
+
 
 ## Add endpoint
 
@@ -51,7 +58,7 @@ Or, as a promise:
         return {
             id: faki.data.id,
             name: faki.data.name,
-            gender: faki.random(['male', 'female']
+            gender: faki.random(['male', 'female'])
         };
     });
     
