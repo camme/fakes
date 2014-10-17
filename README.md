@@ -21,8 +21,8 @@ Add fake endpoints with data:
             title: faki.data.lorem(3),
             intro: faki.data.lorem(50),
             description: faki.data.lorem(200, 3),
-            images: fake.list(fake.data.image, 5),
-            tags: fake.list(fake.data.tag, 5, 10)
+            images: faki.list(faki.data.image, 5),
+            tags: faki.list(faki.data.tag, 5, 10)
         };
     });
     
@@ -37,8 +37,8 @@ Or, as a promise:
             title: faki.data.lorem(3),
             intro: faki.data.lorem(50),
             description: faki.data.lorem(200, 3),
-            images: fake.list(fake.data.image, 5),
-            tags: fake.list(fake.data.tag, 5, 10)
+            images: faki.list(faki.data.image, 5),
+            tags: faki.list(faki.data.tag, 5, 10)
         };
     });
     
@@ -48,7 +48,7 @@ Or, as a promise:
 This will create a list of pages, as defined above. Thats why we give it an ID
 
     faki.get('pages', '/page', function() {
-        return fake.list('page', 10);
+        return faki.list('page', 10);
     });
     
 ## POST endpoints:
@@ -82,12 +82,12 @@ You can also create more complex objects like this:
     faki.get('location', '/location/:id').then(function() {
         return {
             id: faki.data.id,
-            events: fake.list({
+            events: faki.list({
                 title: faki.data.lorem(10),
                 startDate: faki.data.date,
-                sponsors: fake.list({
+                sponsors: faki.list({
                     name: faki.data.lorem(2),
-                    tags: fake.list(fake.data.tag, 2, 5)
+                    tags: faki.list(faki.data.tag, 2, 5)
                 }, 5)
             }, 10, 30),
             title: faki.data.lorem(10),
