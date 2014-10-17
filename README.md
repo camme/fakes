@@ -55,7 +55,7 @@ This will create a list of pages, as defined above. Thats why we give it an ID
 
 You can create post, put and delete endpoints and what they will return.
 
-** We should also build a mechanism that warns if the incoming request doesnt have the correct data **
+**We should also build a mechanism that warns if the incoming request doesnt have the correct data**
 
     faki.post('page', '/page/:slug').then(function() {
         return {
@@ -88,8 +88,8 @@ You can also create more complex objects like this:
                 sponsors: fake.list({
                     name: faki.data.lorem(2),
                     tags: fake.list(fake.data.tag, 2, 5)
-                })
-            }),
+                }, 5)
+            }, 10, 30),
             title: faki.data.lorem(10),
             geo: faki.data.geo
         };
