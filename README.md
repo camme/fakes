@@ -14,7 +14,7 @@ Add fake endpoints with data:
 
     var faki = require('fake');
     
-    // Create a new type of data, with its endpoint name and its data structure
+    // Create a new type of data, with its endpoint name and its data structure   
     faki.get('page', '/page/:slug', function() {
         return {
             id: faki.data.id,
@@ -29,19 +29,29 @@ Add fake endpoints with data:
     // Start the fake API server
     faki.start(8080);
     
-Or, as a promise:
+**IS THIS BETTER?**
 
-    faki.get('page', '/page/:slug').then(function() {
-        return {
+    var faki = require('fake');
+
+    // Create a new type of data, with its endpoint name and its data structure
+    faki.get('page', '/page/:slug')
+        
+        // This is what the endpoint will return
+        .returns({
             id: faki.data.id,
             title: faki.data.lorem(3),
             intro: faki.data.lorem(50),
             description: faki.data.lorem(200, 3),
             images: faki.list(faki.data.image, 5),
             tags: faki.list(faki.data.tag, 5, 10)
-        };
-    });
-    
+        })
+        
+        // If this is used, it will create as many entries as provided when the server starts.
+        // If it is omitted the fake API will just create content dynamically whenever its called.
+        .create(10);
+      
+    // Start the fake API server
+    faki.start(8080);   
     
 ## Add endpoint that list data type
     
