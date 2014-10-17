@@ -20,7 +20,7 @@ Add fake endpoints with data:
             intro: faki.data.lorem(50),
             description: faki.data.lorem(200, 3),
             images: fake.list(fake.data.image, 5),
-            tags: fake.list(fake.data.tag, "5-10")
+            tags: fake.list(fake.data.tag, 5, 10)
         };
     });
     
@@ -33,7 +33,7 @@ Or, as a promise:
             intro: faki.data.lorem(50),
             description: faki.data.lorem(200, 3),
             images: fake.list(fake.data.image, 5),
-            tags: fake.list(fake.data.tag, "5-10")
+            tags: fake.list(fake.data.tag, 5, 10)
         };
     });
     
