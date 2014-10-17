@@ -1,4 +1,4 @@
-# Faki
+Faki
 ========
 
 faki.js is a fake api maker to make frontend project a lot faster. It also works as a contract between the frontend and the backend.
