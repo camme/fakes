@@ -1,9 +1,9 @@
 Faki
 ========
 
-faki.js is a fake api maker to make frontend project a lot faster. It also works as a contract between the frontend and the backend.
+faki.js is a fake api maker to start your frontend project a lot faster. It also works as a contract between the frontend and the backend.
 
-Its main goal is to quickly create endpoints with data that might be fake, but looks relevant.
+Its main goal is to quickly create endpoints with data that might be fake, but look relevant.
 
 
 
