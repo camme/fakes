@@ -1,0 +1,28 @@
+{
+  "name": "faki",
+  "version": "0.0.6",
+  "description": "A tool to create fake APIs extremly quickly with relevant data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/camme/faki.git"
+  },
+  "keywords": [
+    "fake",
+    "api",
+    "data"
+  ],
+  "author": "Camilo Tapia <camilo.tapia@gmail.com> (http://www.1001.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camme/faki/issues"
+  },
+  "homepage": "https://github.com/camme/faki",
+  "dependencies": {
+    "express": "^4.9.7",
+    "fs-walk": "0.0.1"
+  }
+}
