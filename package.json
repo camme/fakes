@@ -23,6 +23,7 @@
   "homepage": "https://github.com/camme/faki",
   "dependencies": {
     "express": "^4.9.7",
+    "faker": "^2.0.1",
     "fs-walk": "0.0.1"
   }
 }
