@@ -14,7 +14,7 @@ When an endpoint is created, and the data for that endpoint had been dynamically
 
 Add fake endpoints with data:
 
-    var faki = require('fake');
+    var faki = require('faki');
 
     // Create a new type of data, with its endpoint name and its data structure
     faki.get('page', '/page/:slug')
