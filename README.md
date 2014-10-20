@@ -7,8 +7,10 @@ Its main goal is to quickly create endpoints with data that might be fake, but l
 
 When an endpoint is created, and the data for that endpoint had been dynamically created as well, the same data will be returned each time the endpoint is called.
 
-**THIS IS ONLY A VERY EARLY ALPHA**
+It uses [faker](https://github.com/FotoVerite/Faker.js) to creates its fake data (but it wraps all faker methods to combine its mechanics, but you shouldnt notice any effect of that).
 
+
+**THIS IS ONLY A VERY EARLY ALPHA**
 
 ## Add endpoint
 
@@ -17,21 +19,15 @@ Add fake endpoints with data:
     var faki = require('faki');
 
     // Create a new type of data, with its endpoint name and its data structure
-    faki.get('page', '/page/:slug')
+    var page = faki.get('/page/:slug')
         
         // This is what the endpoint will return
         .returns({
-            id: faki.data.id,
-            title: faki.data.lorem(3),
-            intro: faki.data.lorem(50),
-            description: faki.data.lorem(200, 3),
-            images: faki.list(faki.data.image, 5),
-            tags: faki.list(faki.data.tag, 5, 10)
-        })
-        
-        // If this is used, it will create as many entries as provided when the server starts.
-        // If it is omitted the fake API will just create content dynamically whenever its called.
-        .create(10);
+            guid: faki.data.guid,
+            title: faki.faker.lorem.sentence(3),
+            intro: faki.faker.lorem.sentence(10),
+            description: faki.faker.lorem.paragraphs(2)
+        });
       
     // Start the fake API server
     faki.start(8080);   
@@ -41,18 +37,18 @@ Add fake endpoints with data:
     
 This will create a list of pages, as defined above. Thats why we give it an ID
 
-    faki.get('pages', '/page', function() {
-        return faki.list('page', 10);
+    faki.get('/page', function() {
+        return faki.list(page, 10);
     });
     
     
-## POST endpoints:
+## POST endpoints (THIS IS NOT IMPLEMENTED YET):
 
 You can create post, put and delete endpoints and what they will return.
 
 **We should also build a mechanism that warns if the incoming request doesnt have the correct data**
 
-    faki.post('page', '/page/:slug').then(function() {
+    faki.post('/page/:slug').then(function() {
         return {
             message: 'updated'
         };
@@ -63,16 +59,16 @@ You can create post, put and delete endpoints and what they will return.
 
 Random values can be added as an array, and the random function will pick one from the array
 
-    faki.get('user', '/user/:guid').then(function() {
+    var user = faki.get('/user/:guid').then(function() {
         return {
-            id: faki.data.id,
-            name: faki.data.name,
+            id: faki.data.guid,
+            name: faki.faker.name.findName,
             gender: faki.random(['male', 'female'])
         };
     });
     
     
-## Deep objects
+## Deep objects (THIS EXAMPLE ISNT IMPLEMENTED YET)
     
 You can also create more complex objects like this:
     
@@ -80,8 +76,7 @@ You can also create more complex objects like this:
         return {
             id: faki.data.id,
             events: faki.list({
-                title: faki.data.lorem(10),
-                startDate: faki.data.date,
+                title: faki.faker.lorem.sentence(1),
                 sponsors: faki.list({
                     name: faki.data.lorem(2),
                     tags: faki.list(faki.data.tag, 2, 5)

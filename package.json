@@ -1,6 +1,6 @@
 {
   "name": "faki",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A tool to create fake APIs extremly quickly with relevant data.",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "express": "^4.9.7",
     "faker": "^2.0.1",
-    "fs-walk": "0.0.1"
+    "fs-walk": "0.0.1",
+    "node-uuid": "^1.4.1"
   }
 }
