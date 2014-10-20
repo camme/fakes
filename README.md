@@ -35,11 +35,22 @@ Add fake endpoints with data:
     
 ## Add endpoint that list data type
     
-This will create a list of pages, as defined above. Thats why we give it an ID
+This will create a list of pages, as defined above.
 
-    faki.get('/page', function() {
-        return faki.list(page, 10);
-    });
+    faki.get('/page')
+        .returns({
+            list: faki.list(page, 10)
+        })
+    
+    
+## Add endpoint with list of links
+    
+This will create a list of links to entries
+
+    faki.get('/menu')
+        .returns({
+            list: faki.list(faki.link(page), 10)
+        })
     
     
 ## POST endpoints (THIS IS NOT IMPLEMENTED YET):
@@ -48,32 +59,30 @@ You can create post, put and delete endpoints and what they will return.
 
 **We should also build a mechanism that warns if the incoming request doesnt have the correct data**
 
-    faki.post('/page/:slug').then(function() {
-        return {
+    faki.post('/page/:slug')
+        .returns({
             message: 'updated'
         };
-    });
     
     
 ## Random values
 
 Random values can be added as an array, and the random function will pick one from the array
 
-    var user = faki.get('/user/:guid').then(function() {
-        return {
+    var user = faki.get('/user/:guid')
+        .returns({
             id: faki.data.guid,
             name: faki.faker.name.findName,
             gender: faki.random(['male', 'female'])
-        };
-    });
-    
+        });
+
     
 ## Deep objects (THIS EXAMPLE ISNT IMPLEMENTED YET)
     
 You can also create more complex objects like this:
     
-    faki.get('location', '/location/:id').then(function() {
-        return {
+    faki.get('location', '/location/:id')
+        .returns({
             id: faki.data.id,
             events: faki.list({
                 title: faki.faker.lorem.sentence(1),
@@ -84,6 +93,5 @@ You can also create more complex objects like this:
             }, 10, 30),
             title: faki.data.lorem(10),
             geo: faki.data.geo
-        };
-    });
+        });
     
