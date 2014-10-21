@@ -10,13 +10,14 @@ When an endpoint is created, and the data for that endpoint had been dynamically
 It uses [faker](https://github.com/FotoVerite/Faker.js) to creates its fake data (but it wraps all faker methods to combine its mechanics, but you shouldnt notice any effect of that).
 
 
-**THIS IS ONLY A VERY EARLY ALPHA**
+**THIS IS ONLY AN EARLY ALPHA**
 
 ## Add endpoint
 
 Add fake endpoints with data:
 
     var faki = require('faki');
+    var faker = faki.faker;
 
     // Create a new type of data, with its endpoint name and its data structure
     var page = faki.get('/page/:slug')
@@ -24,9 +25,9 @@ Add fake endpoints with data:
         // This is what the endpoint will return
         .returns({
             guid: faki.data.guid,
-            title: faki.faker.lorem.sentence(3),
-            intro: faki.faker.lorem.sentence(10),
-            description: faki.faker.lorem.paragraphs(2)
+            title: faker.lorem.sentence(3),
+            intro: faker.lorem.sentence(10),
+            description: faker.lorem.paragraphs(2)
         });
       
     // Start the fake API server
@@ -37,12 +38,27 @@ Add fake endpoints with data:
     
 This will create a list of pages, as defined above.
 
-    faki.get('/page')
+    var pageList = faki.get('/page')
         .returns({
             list: faki.list(page, 10)
         })
     
-    
+## Make the endpoint always generate new data 
+
+    // Create a new type of data, with its endpoint name and its data structure
+    var page = faki.get('/page/:slug')
+        
+        // This is what the endpoint will return
+        .returns({
+            guid: faki.data.guid,
+            title: faker.lorem.sentence(3),
+            intro: faker.lorem.sentence(10),
+            description: faker.lorem.paragraphs(2)
+        })
+      
+        // Dont cache anything
+       .cache(false);
+
 ## Add endpoint with list of links
     
 This will create a list of links to entries
@@ -77,21 +93,25 @@ Random values can be added as an array, and the random function will pick one fr
         });
 
     
-## Deep objects (THIS EXAMPLE ISNT IMPLEMENTED YET)
+## Deep objects
     
 You can also create more complex objects like this:
-    
-    faki.get('location', '/location/:id')
-        .returns({
-            id: faki.data.id,
-            events: faki.list({
-                title: faki.faker.lorem.sentence(1),
-                sponsors: faki.list({
-                    name: faki.data.lorem(2),
-                    tags: faki.list(faki.data.tag, 2, 5)
-                }, 5)
-            }, 10, 30),
-            title: faki.data.lorem(10),
-            geo: faki.data.geo
-        });
-    
+   
+    var page = faki
+       .get('/foo/:id')
+       .returns({
+           guid: faki.data.guid,
+           name: faker.name.findName,
+           image: faker.image.imageUrl,
+           gender: faki.random(['male', 'female']),
+           foo: "static",
+           participants: {
+               name: faker.name.findName,
+               friends: faki.list({ 
+                   foo: faker.name.findName, 
+                   tags: faki.list(faker.lorem.words(1), 5)
+               }, 1, 4)
+           },
+       })
+
+   
