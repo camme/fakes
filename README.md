@@ -89,7 +89,7 @@ Random values can be added as an array, and the random function will pick one fr
         .returns({
             id: faki.data.guid,
             name: faki.faker.name.findName,
-            gender: faki.random(['male', 'female'])
+            gender: faki.random(['male', 'female', 'other'])
         });
 
     
@@ -98,20 +98,43 @@ Random values can be added as an array, and the random function will pick one fr
 You can also create more complex objects like this:
    
     var page = faki
-       .get('/foo/:id')
-       .returns({
-           guid: faki.data.guid,
-           name: faker.name.findName,
-           image: faker.image.imageUrl,
-           gender: faki.random(['male', 'female']),
-           foo: "static",
-           participants: {
-               name: faker.name.findName,
-               friends: faki.list({ 
-                   foo: faker.name.findName, 
-                   tags: faki.list(faker.lorem.words(1), 5)
-               }, 1, 4)
-           },
-       })
+        .get('/foo/:id')
+        .returns({
+            
+            // Create a random V4 GUID
+            guid: faki.data.guid,
+
+            // Create a random name from faker.js
+            name: faker.name.findName,
+
+            // Get a random image from faker.js
+            image: faker.image.imageUrl,
+
+            // Pick a random value from the provided array
+            gender: faki.random(['male', 'female', 'other']),
+
+            // Always return the static content
+            foo: "static",
+
+            // Create a deep object
+            participants: {
+
+                // Create a new name from faker.js
+                name: faker.name.findName,
+
+                // Another deep object, this time a list with between 1 to 4 entries
+                friends: faki.list({ 
+                    
+                    // Create a new name from faker.js
+                    foo: faker.name.findName, 
+
+                    // Create a list of words and pifkc them from faker.js
+                    tags: faki.list(faker.lorem.words(1), 5)
+
+                }, 1, 4)
+
+            },
+
+        });
 
    

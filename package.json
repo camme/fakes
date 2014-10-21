@@ -1,6 +1,6 @@
 {
   "name": "faki",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A tool to create fake APIs extremly quickly with relevant data.",
   "main": "index.js",
   "scripts": {
