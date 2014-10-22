@@ -33,6 +33,16 @@ Add fake endpoints with data:
     // Start the fake API server
     fakes.start(8080);   
     
+En it will give you something like this when you call `http://localhost:8080/page/foo`
+
+    {
+        "guid": "67d82ad7-f466-4798-8e48-5722fee1258d",
+        "title": "veniam sint cupiditate",
+        "intro": "et sed corporis voluptatibus architecto omnis",
+        "description": "nostrum non esse voluptatem\nillo est sit ex vel qui\nminus officiis repellat aut ipsa quo perferendis ea inventore eius\nomnis reiciendis natus atque maxime necessitatibus exercitationem voluptas aut dignissimos\n \r\teveniet sequi et est qui\nprovident aut sunt saepe ipsum\narchitecto sint reprehenderit voluptas beatae eum qui\n \r\teos vel eos hic provident iusto consequatur autem\ndolor qui nemo ut tenetur\nquos corporis molestiae adipisci veritatis\nnesciunt debitis sed voluptatum et\nnobis occaecati blanditiis minus\nenim vel laboriosam alias ea et neque necessitatibus cupiditate culpa"
+    }
+    
+If you call the same address, the same content will be returned. However, if you call a new url, it will generate new content for you.
     
 ## Add endpoint that list data type
     
