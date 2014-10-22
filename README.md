@@ -67,18 +67,7 @@ This will create a list of links to entries
         .returns({
             list: fakes.list(fakes.link(page), 10)
         })
-    
-    
-## POST endpoints (THIS IS NOT IMPLEMENTED YET):
 
-You can create post, put and delete endpoints and what they will return.
-
-**We should also build a mechanism that warns if the incoming request doesnt have the correct data**
-
-    fakes.post('/page/:slug')
-        .returns({
-            message: 'updated'
-        };
     
     
 ## Random values
@@ -138,3 +127,16 @@ You can also create more complex objects like this:
         });
 
    
+## Roadmap
+
+These are some features that we would like to implement:
+
+- POST endpoints
+  - Return an answer when something is posten
+  - Verify that the incoming data is ok
+- More examples
+- Use **fakes** as a test to validate the real data
+  - Make it test a real endpoint
+  - Generate reports based on validation of structure and basic data type
+  
+ 
