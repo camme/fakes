@@ -1,6 +1,6 @@
 {
   "name": "fakes",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A tool to create fake APIs extremly quickly with relevant data.",
   "main": "index.js",
   "scripts": {
