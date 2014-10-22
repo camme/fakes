@@ -33,7 +33,7 @@ Add fake endpoints with data:
     // Start the fake API server
     fakes.start(8080);   
     
-En it will give you something like this when you call `http://localhost:8080/page/foo`
+...and it will give you something like this when you call `http://localhost:8080/page/foo`
 
     {
         "guid": "67d82ad7-f466-4798-8e48-5722fee1258d",
