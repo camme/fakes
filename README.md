@@ -131,6 +131,13 @@ You can also create more complex objects like this:
 
 These are some features that we would like to implement:
 
+- ~~GET endpoints~~
+- ~~Add option to not cache data~~
+- ~~Deep objects~~
+- ~~Add faker.js integration~~
+- ~~Add random selection from array~~
+- ~~Add generated list with data from other endpoint~~
+- ~~Add link to other endpoint~~
 - POST endpoints
   - Return an answer when something is posten
   - Verify that the incoming data is ok
